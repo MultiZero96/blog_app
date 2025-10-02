@@ -1,6 +1,7 @@
 # 🚀 Laravel Blog — Containerized Setup Guide
 
-A fully containerized Laravel blog application designed for seamless cross-platform development (Windows, macOS, Linux). This README walks you through cloning, configuring, and launching the project using Docker — with backend and frontend build steps included.
+A fully containerized Laravel blog application.
+This README walks you through cloning, configuring, and launching the project using Docker — with backend and frontend build steps included.
 
 ---
 
