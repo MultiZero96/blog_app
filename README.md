@@ -89,12 +89,6 @@ Visit your app in the browser:
 http://localhost:8000
 ```
 
-If you changed ports in `docker-compose.yml`, adjust the URL accordingly.
-
----
-
-
-
 ---
 
 ## 🙌 Final Notes
