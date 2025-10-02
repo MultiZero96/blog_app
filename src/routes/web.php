@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,5 +28,8 @@ Route::get('/posts/{id}', [PostController::class, 'show']);
 Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->middleware('auth');
 Route::put('/posts/{id}', [PostController::class, 'update'])->middleware('auth');
 Route::delete('/posts/{id}', [PostController::class, 'destroy'])->middleware('auth');
+
+Route::post('/posts/{id}/comments', [CommentController::class, 'store']);
+Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->middleware('auth');
 
 require __DIR__.'/auth.php';
