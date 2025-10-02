@@ -37,11 +37,21 @@ public function store(Request $request) {
     }
 
     public function edit($id) {
-        $post = Post::findOrFail($id);
-        abort_unless($post->user_id === auth()->id(), 403);
-        return view('posts.edit', compact('post'));
-    }
+    $post = Post::findOrFail($id);
+    $this->authorize('update', $post);
+    return view('posts.edit', compact('post'));
+}
 
+
+    public function destroy($id) {
+    $post = Post::findOrFail($id);
+    $this->authorize('delete', $post);
+    $post->delete();
+
+    return redirect('/posts')->with('success', 'Post deleted!');
+}
+
+    
     public function update(Request $request, $id) {
         $post = Post::findOrFail($id);
         abort_unless($post->user_id === auth()->id(), 403);
@@ -56,12 +66,5 @@ public function store(Request $request) {
         return redirect("/posts/{$id}")->with('success', 'Post updated!');
     }
 
-    public function destroy($id) {
-        $post = Post::findOrFail($id);
-        abort_unless($post->user_id === auth()->id(), 403);
-        $post->delete();
-
-        return redirect('/posts')->with('success', 'Post deleted!');
-    }
 
 }

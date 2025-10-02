@@ -22,14 +22,11 @@ class CommentController extends Controller
 
     public function destroy($id) {
     $comment = \App\Models\Comment::findOrFail($id);
-    $isOwner = auth()->id() === $comment->user_id;
-    $isPostOwner = auth()->id() === $comment->post->user_id;
-
-    abort_unless($isOwner || $isPostOwner, 403);
+    $this->authorize('delete', $comment);
 
     $comment->delete();
     return back()->with('success', 'Comment deleted!');
-    }
+}
 
 
 }

@@ -20,16 +20,18 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/posts', [PostController::class, 'index']);
-Route::get('/posts/create', [PostController::class, 'create'])->middleware('auth');
-Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
 
-Route::get('/posts/{id}', [PostController::class, 'show']);
-Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->middleware('auth');
-Route::put('/posts/{id}', [PostController::class, 'update'])->middleware('auth');
-Route::delete('/posts/{id}', [PostController::class, 'destroy'])->middleware('auth');
-
-Route::post('/posts/{id}/comments', [CommentController::class, 'store']);
-Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('/posts/create', [PostController::class, 'create']);
+    Route::post('/posts', [PostController::class, 'store']);
+    Route::get('/posts/{id}/edit', [PostController::class, 'edit']);
+    Route::put('/posts/{id}', [PostController::class, 'update']);
+    Route::delete('/posts/{id}', [PostController::class, 'destroy']);
+    
+    Route::delete('/comments/{id}', [CommentController::class, 'destroy']);
+});
+    Route::get('/posts', [PostController::class, 'index']);
+    Route::get('/posts/{id}', [PostController::class, 'show']);
+    Route::post('/posts/{id}/comments', [CommentController::class, 'store']);
 
 require __DIR__.'/auth.php';
