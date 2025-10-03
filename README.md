@@ -108,3 +108,8 @@ After you see the splash screen, you can start by registering, afterwards you ca
 ```
 npm install @rollup/rollup-linux-x64-gnu
 ```
+Once these issues are resolved you can try running the css build command again:
+```
+cd src/
+npm install && npm run build
+```
