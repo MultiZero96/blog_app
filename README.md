@@ -103,7 +103,7 @@ After you see the splash screen, you can start by registering, afterwards you ca
 ## 🛠️ Troubleshooting
 
 ### It is possible that your node version is outdated. Check if you node.js is at least version >= 20
-### Other common error is the problem with the npm module <code> @rollup/rollup-linux-x64-gnu </code>, this error can be solved by installing the module directly by running the following command within the <code> project/src/:
+### Other common error is the problem with the npm module <code> @rollup/rollup-linux-x64-gnu </code>, this error can be solved by installing the module directly by running the following command within the <code> project/src/</code>
 
 ```
 npm install @rollup/rollup-linux-x64-gnu
