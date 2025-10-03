@@ -67,6 +67,13 @@ This will:
 - Populate sample data via seeders
 
 ---
+## 🔓 Setting up container permissions
+
+```bash
+docker exec -it laravel_app bash
+chmod -R 775 storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache
+```
 
 ## 🎨 Build Frontend Assets
 
@@ -89,8 +96,15 @@ Visit your app in the browser:
 http://localhost:8000
 ```
 
----
-
 ## 🙌 Final Notes
 
 After you see the splash screen, you can start by registering, afterwards you can browse posts/test the app:
+
+## 🛠️ Troubleshooting
+
+### It is possible that your node version is outdated. Check if you node.js is at least version >= 20
+### Other common error is the problem with the npm module <code> @rollup/rollup-linux-x64-gnu </code>, this error can be solved by installing the module directly by running the following command within the <code> project/src/:
+
+```
+npm install @rollup/rollup-linux-x64-gnu
+```
